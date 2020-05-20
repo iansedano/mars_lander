@@ -1,7 +1,7 @@
 import sys
 import math
 
-# drawing surface ang getting target plane
+# drawing surface and getting target plane
 target_x1, target_y1, target_x2, target_y2 = 0, 0, 0, 0
 last_x, last_y = 0, 0
 surface_n = int(input())
@@ -23,9 +23,6 @@ counter = 0
 
 while True:
     counter += 1
-    # print("counter: " + str(counter), file=sys.stderr)
-    # print(f"land target x: {target_x1},{target_x2}", file=sys.stderr)
-    # print(f"land target y: {target_y1}", file=sys.stderr)
 
     x, y, h_speed, v_speed, fuel, rotate, power = [
         int(i) for i in input().split()]
@@ -35,13 +32,11 @@ while True:
     if v_speed > 0:
         v_speed *= -1
 
-
     if h_speed != 0 and v_speed != 0:
         aoa = math.atan2(v_speed, h_speed)
         print(f"aoa {round(math.degrees(aoa), 3)} degrees", file=sys.stderr)
 
         y0 = y - target_y1  # height from target
-        # print(f"y0 {y0}", file=sys.stderr)
 
         vector_mag = math.hypot(h_speed, v_speed)
 
@@ -62,7 +57,6 @@ while True:
         ) * (math.sin(2 * theta))
 
         distance = (int(distance) / 10) * -1
-
 
         print(f"projected landing distance {distance}", file=sys.stderr)
 
@@ -93,26 +87,20 @@ while True:
         comp_dist_l = int( (distance * 0.3) * abs(h_speed * 0.01) )
         comp_dist_r = int( (distance * 0.3) * abs(h_speed * 0.01) )
 
-        print(f"comp dist right {comp_dist_r}", file=sys.stderr)
 
         if approach_from == "left" and comp_dist_l + x > target_x1:
 
-            print(f"comp dist {comp_dist_l}", file=sys.stderr)
             stage = 3
 
         if approach_from == "right" and comp_dist_r + x < target_x2:
 
-            print(f"comp dist {comp_dist_r}", file=sys.stderr)
             stage = 3
 
-    elif stage == 3: # SLOW DOWN
+    elif stage == 3:  # SLOW DOWN
 
         thrust = 4
 
         opp_aoa = int((math.degrees(aoa) - 90) % 360 - 180)
-
-
-        print(f"opp ang of atk {opp_aoa}", file=sys.stderr)
 
         if opp_aoa >= 70:
             opp_aoa = 70
@@ -128,15 +116,11 @@ while True:
             angle = 0
             stage = 4
 
-    elif stage == 4:
+    elif stage == 4:  # LANDING
 
         if v_speed < -30:
             thrust = 4
         else:
             thrust = 3
 
-
-
-    # rotate power. rotate is the desired rotation angle. power is the desired thrust power.
-    print("stage: " + str(stage), file=sys.stderr)
-    print(str(angle) + " " + str(thrust))
+    print(str(angle) + " " + str(thrust))  # OUTPUT
