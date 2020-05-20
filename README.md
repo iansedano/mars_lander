@@ -4,9 +4,9 @@
 
 A lander AI made for a codingame competition.
 
-[landing on high ground](https://www.codingame.com/replay/467872620)
-[landing in canyon](https://www.codingame.com/replay/467872587)
-[landing with high inital horizontal speed](https://www.codingame.com/replay/467872533)
+[landing on high ground](https://www.codingame.com/replay/467872620)  
+[landing in canyon](https://www.codingame.com/replay/467872587)  
+[landing with high inital horizontal speed](https://www.codingame.com/replay/467872533)  
 
 ## The Math
 The formula used to obtain the projected range of the lander based on current speed and angle of attack.
