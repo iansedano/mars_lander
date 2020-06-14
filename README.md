@@ -2,18 +2,18 @@
 
 ![](https://www.dropbox.com/s/pmxvey44i0dqywn/lander.png?raw=1)
 
-A lander AI made for a codingame competition.
+A lander AI made for a competition. Currently placed in top 10% worldwide.
 
-[landing on high ground](https://www.codingame.com/replay/467872620)  
-[landing in canyon](https://www.codingame.com/replay/467872587)  
-[landing with high inital horizontal speed](https://www.codingame.com/replay/467872533)  
+[landing on high ground](https://www.dropbox.com/s/rsz3v905el8stxe/2020-06-14%2016-17-32.mkv?dl=0)  
+[landing in canyon](https://www.dropbox.com/s/gzhs9zoauow6gz8/2020-06-14%2016-18-18.mkv?dl=0)  
+[landing with high inital horizontal speed](https://www.dropbox.com/s/58jtxc19xr0cjlv/2020-06-14%2016-18-34.mkv?dl=0)  
 
-## The Math
+## Projected Range
 The formula used to obtain the projected range of the lander based on current speed and angle of attack.
 
 ![](https://wikimedia.org/api/rest_v1/media/math/render/svg/6cdb6b0652addd09d3b722bfb7e107dff0f1364a)
 
-Taken from this wikipedia [article](https://en.wikipedia.org/wiki/Range_of_a_projectile)
+Taken from [this wikipedia article](https://en.wikipedia.org/wiki/Range_of_a_projectile)
 
 This is how I implemented it in code:
 ```
@@ -42,13 +42,11 @@ distance = (
 distance = (int(distance) / 10) * -1
 ```
 
-The last line in theory shouldn't be necessary but I needed it to calibrate the result! I must have got my units mixed up somewhere.
+The last line in theory shouldn't be necessary but I needed it to calibrate the result! I must have got my units mixed up somewhere but haven't figured out where.
 
-The strange indentation is my way of making it more readable, but its still a bit of a mess.
+## Landing Sequence
 
-## Sequence of code
-
-1. During initlialization, the coordinates for each of the planes are given. For this challenge there is only one possible flat plane, and so the code returns the y-height and the x coordinates of the first flat plane it finds.
+1. During initialization, the coordinates for each of the planes are given. For this challenge there is only one possible flat plane, and so the code returns the y-height and the x coordinates of the first flat plane it finds.
 
 2. With the landing plane identified, the code checks to see if the lander is going in the right direction at a minimum velocity. If it is not, then it accelerates towards its target. Once it is going at the required velocity, then it enters the next stage.
 
@@ -57,3 +55,4 @@ The strange indentation is my way of making it more readable, but its still a bi
 4. The code directs the lander to thrust in the direction opposite its current angle of attack. So if the lander has a lot of horizontal velocity, it starts out thrusting almost horizontally. As the horizontal velocity is diminished, the lander gradually turns vertically. It will carry on in this way until it reaches a threshold for horizontal velocity, then it enters the final stage.
 
 5. The final stage just involves the lander pointing vertically and keeping its velocity below a threshold to ensure safe landing.
+
