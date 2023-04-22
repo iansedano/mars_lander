@@ -28,7 +28,7 @@ theta = aoa
 g = 3.711
 
 distance = (
-    (vector_mag**2 / 2 * g) *
+    (vector_mag**2 / (2 * g)) *
     (
         1 + (
             1 + (
@@ -39,10 +39,10 @@ distance = (
     )
 ) * (math.sin(2 * theta))
 
-distance = (int(distance) / 10) * -1
+distance = int(distance) * -1
 ```
 
-The last line in theory shouldn't be necessary but I needed it to calibrate the result! I must have got my units mixed up somewhere but haven't figured out where.
+Thanks to @Totoleharicotvert for spotting a mistake that caused me to have to divide the whole distance by 10. (https://github.com/iansedano/mars_lander/issues/1)
 
 ## Landing Sequence
 
