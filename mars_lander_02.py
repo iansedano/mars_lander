@@ -45,7 +45,7 @@ while True:
         g = 3.711
 
         distance = (
-            (vector_mag**2 / 2 * g) *
+            (vector_mag**2 / (2 * g)) *
             (
                 1 + (
                     1 + (
@@ -56,7 +56,7 @@ while True:
             )
         ) * (math.sin(2 * theta))
 
-        distance = (int(distance) / 10) * -1
+        distance = int(distance) * -1
 
         print(f"projected landing distance {distance}", file=sys.stderr)
 
