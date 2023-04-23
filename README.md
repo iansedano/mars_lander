@@ -11,7 +11,7 @@ A lander AI made for a competition. Currently placed in top 10% worldwide.
 ## Projected Range
 The formula used to obtain the projected range of the lander based on current speed and angle of attack.
 
-![](https://wikimedia.org/api/rest_v1/media/math/render/svg/6cdb6b0652addd09d3b722bfb7e107dff0f1364a)
+$d={\frac {v^{2}}{2g}}\left(1+{\sqrt {1+{\frac {2g\ y_{0}}{v^{2}\sin ^{2}\theta }}\ }}\right)\sin 2\theta$
 
 Taken from [this wikipedia article](https://en.wikipedia.org/wiki/Range_of_a_projectile)
 
